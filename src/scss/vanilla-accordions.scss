@@ -1,0 +1,59 @@
+body {
+  @apply bg-dark;
+}
+
+.vnl-accordions {
+  @apply flex flex-col p-4 gap-4 bg-dark text-light;
+  font-family: 'Lato', sans-serif;
+  &-item {
+    @apply relative rounded-lg px-0 pl-4 pr-16 border border-transparent cursor-pointer;
+    @apply hover:bg-highlight;
+    &.active {
+      .vnl-accordions-title {
+        @apply text-accent;
+      }
+      .vnl-accordions-content {
+        max-height: 900px;
+      }
+      .vnl-accordions-action {
+        transform: rotate(45deg);
+        &:before,
+        &:after {
+          @apply bg-accent;
+        }
+      }
+    }
+  }
+
+  &-title {
+    @apply text-30px font-light my-4;
+  }
+
+  &-content {
+    @apply overflow-hidden;
+    max-height: 0;
+    transition: max-height .25s;
+    p {
+      @apply mb-4;
+      line-height: 2;
+    }
+  }
+  &-action {
+    @apply block absolute top-7 right-7 w-5 h-5;
+    transition: transform .3s;
+    &:before,
+    &:after {
+      @apply block absolute w-full bg-light;
+      content: '';
+      height: 1px;
+      left: 50%;
+      top: 50%;
+    }
+    &:before {
+      transform: translate(-50%,-50%);
+    }
+    &:after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+}
